@@ -2,6 +2,11 @@ import express, { NextFunction, Request, Response } from 'express';
 import path from 'path';
 
 
+// load environmental vars
+if(process.env.NODE_ENV !== 'production'){
+  require('dotenv').config();
+}
+
 
 
 // -------------------firing express app
@@ -9,6 +14,19 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, `client/build`)));
+
+
+
+
+
+
+
+/* ----------------------------------------
+.                 config
+---------------------------------------- */
+import './config/dbConfig';
+
+
 
 
 
