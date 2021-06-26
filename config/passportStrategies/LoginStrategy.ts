@@ -9,6 +9,6 @@ export default new Strategy(
   },
   (req, email, password, done)=>{
     console.log({email, password});
-    done(null, 'user');
+    done(null, 'logging strategy user');
   }
 )

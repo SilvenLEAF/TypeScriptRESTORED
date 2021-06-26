@@ -6,8 +6,8 @@ import LoginStrategy from './passportStrategies/LoginStrategy';
 
 // serialize and deserialize users
 passport.serializeUser<any,any>((user, done:any)=>{
-  console.log(`Serializing user!`);
-  done(user);
+  console.log(`Serializing user!`, user);
+  done(null, user);
 });
 
 passport.deserializeUser((id, done)=>{

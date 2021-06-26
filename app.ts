@@ -38,7 +38,7 @@ app.use(passport.session());
 .                 config
 ---------------------------------------- */
 import './config/dbConfig';
-
+import './config/passportConfig';
 
 
 
@@ -50,6 +50,9 @@ import './config/dbConfig';
 /* ----------------------------------------
 .                 ROUTES
 ---------------------------------------- */
+import authRoute from './routes/authRoute';
+app.use(authRoute);
+
 app.get('/', (req: Request, res: Response, next: NextFunction)=>{
   console.log(req.url);
   return res.json({ message: `Welcome to homepage!` })
