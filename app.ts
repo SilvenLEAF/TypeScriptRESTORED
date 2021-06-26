@@ -1,6 +1,10 @@
 import express, { NextFunction, Request, Response } from 'express';
 import path from 'path';
 
+import passport from 'passport';
+import cookieSession from 'cookie-session';
+
+
 
 // load environmental vars
 if(process.env.NODE_ENV !== 'production'){
@@ -14,6 +18,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, `client/build`)));
+
+
+// cookie and passport
+app.use(cookieSession({
+  maxAge: 24*60*60*1000,
+  keys: [`orehasaikyounizettainaru`],
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 
